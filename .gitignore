@@ -3,7 +3,7 @@
 ##
 ## Get latest from httpsgithub.comgithubgitignoreblobmainVisualStudio.gitignore
 
-/bin/.
+bin/.
 
 # User-specific files
 .rsuser

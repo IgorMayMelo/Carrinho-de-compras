@@ -1,0 +1,22 @@
+﻿@using ECommerce.Models
+@model IEnumerable<Produto>
+
+@{
+	ViewData["Title"] = "Carrinho de Compra";
+}
+
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+	<a asp-action="Create">Adicionar novo item ao Carrinho de Compra</a>
+</p>
+
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>@Html.DisplayNameFor(model => model.Name)</th>
+			<th></th>
+		</tr>
+	</thead>
+</table>

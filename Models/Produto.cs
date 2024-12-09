@@ -1,10 +1,14 @@
-﻿namespace ECommerce.Controllers
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ECommerce.Models
 {
     public class Produto
     {
         public int Id { get; set; }
 
-        public string Nome { get; set; }
+		[Display(Name = "Nome")]
+		[Required(ErrorMessage = "O campo {0} é obrigatório")]
+		public string Name { get; set; }
 
         public double Preco { get; set; }
 
@@ -15,13 +19,13 @@
 
         public Produto()
         {
-            
+
         }
 
-        public Produto(int id, string nome, double preco, double peso, string marca)
+        public Produto(int id, string name, double preco, double peso, string marca)
         {
             Id = id;
-            Nome = nome;
+            Name = name;
             Preco = preco;
             Peso = peso;
             Marca = marca;
