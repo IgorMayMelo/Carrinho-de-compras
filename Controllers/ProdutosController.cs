@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ECommerce.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Controllers
 {
@@ -6,7 +7,20 @@ namespace ECommerce.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            List<Produto> produtos = new List<Produto>
+            {
+                new Produto
+                {
+                    Id = 1,
+                    Name = "test",
+                },
+                new Produto
+                {
+                    Id = 2,
+                    Name = "safsf",
+                }
+            };
+            return View(produtos);
         }
 
         public IActionResult Create()
