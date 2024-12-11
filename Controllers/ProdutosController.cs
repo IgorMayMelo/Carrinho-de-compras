@@ -1,31 +1,45 @@
-﻿using ECommerce.Models;
+﻿using ECommerce.Data;
+using ECommerce.Models;
+using ECommerce.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace ECommerce.Controllers
 {
     public class ProdutosController : Controller
     {
-        public IActionResult Index()
+
+        private readonly ProdutoService _service;
+
+        public ProdutosController(ProdutoService service)
         {
-            List<Produto> produtos = new List<Produto>
-            {
-                new Produto
-                {
-                    Id = 1,
-                    Name = "test",
-                },
-                new Produto
-                {
-                    Id = 2,
-                    Name = "safsf",
-                }
-            };
-            return View(produtos);
+            _service = service;
         }
 
+        public async Task<IActionResult> Index()
+        {
+            return View(await _service.FindAllAsync());
+        }
+
+        //GET Produtos/Create
         public IActionResult Create()
         {
             return View();
+        }
+
+        //POST Produtos/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Produto produto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            await _service.InsertAsync(produto);
+            return RedirectToAction(nameof(Index));
+            
         }
 
         public IActionResult Delete()
@@ -42,5 +56,17 @@ namespace ECommerce.Controllers
         {
             return View();
         }
-    }
+
+
+		//GET Produtos/Error
+		public IActionResult Error(string message)
+		{
+			var viewModel = new ErrorViewModel
+			{
+				Message = message,
+				RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+			};
+			return View(viewModel);
+		}
+	}
 }

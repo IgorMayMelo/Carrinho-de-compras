@@ -12,7 +12,7 @@ namespace ECommerce.Models
 
         public double Preco { get; set; }
 
-        public double Peso { get; set; }
+        public string Peso { get; set; }
 
         public string Marca { get; set; }
 
@@ -22,7 +22,7 @@ namespace ECommerce.Models
 
         }
 
-        public Produto(int id, string name, double preco, double peso, string marca)
+        public Produto(int id, string name, double preco, string peso, string marca)
         {
             Id = id;
             Name = name;
