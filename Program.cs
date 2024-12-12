@@ -27,6 +27,8 @@ namespace ECommerce
                 );
             });
 
+            builder.Services.AddScoped<ProdutoService>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
