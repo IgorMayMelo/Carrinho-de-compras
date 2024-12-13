@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerce.Migrations
 {
     [DbContext(typeof(ECommerceContext))]
-    [Migration("20241209183841_Initial")]
-    partial class Initial
+    [Migration("20241213172223_Produto")]
+    partial class Produto
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace ECommerce.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("ECommerce.Controllers.Produto", b =>
+            modelBuilder.Entity("ECommerce.Models.Produto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,12 +36,13 @@ namespace ECommerce.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Nome")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<double>("Peso")
-                        .HasColumnType("double");
+                    b.Property<string>("Peso")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<double>("Preco")
                         .HasColumnType("double");

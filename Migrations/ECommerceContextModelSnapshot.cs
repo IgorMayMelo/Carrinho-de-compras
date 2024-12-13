@@ -21,7 +21,7 @@ namespace ECommerce.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("ECommerce.Controllers.Produto", b =>
+            modelBuilder.Entity("ECommerce.Models.Produto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -33,12 +33,13 @@ namespace ECommerce.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Nome")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<double>("Peso")
-                        .HasColumnType("double");
+                    b.Property<string>("Peso")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<double>("Preco")
                         .HasColumnType("double");
