@@ -117,9 +117,18 @@ namespace ECommerce.Controllers
             }
         }
 
-        public IActionResult Details()
+        public async Task<IActionResult> Details(int? id)
         {
-            return View();
+            if (id is null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não foi fornecido" });
+            }
+            Produto produto = await _service.FindByIdAsync(id.Value);
+            if (produto is null)
+            {
+                return RedirectToAction(nameof(Error), new { message = "Id não foi encontrado" });
+            }
+            return View(produto);
         }
 
 
